@@ -1,14 +1,16 @@
 module Models exposing (..)
 
+import Tournament.Model as Tournament
+
 type alias Model =
-    { message : String
-    , route : Route
+    { route : Route
+    , tournamentModel: Tournament.Model
     }
 
 initialModel : Route -> Model
 initialModel route =
-  { message = "Hello"
-  , route = route
+  { route = route
+  , tournamentModel = Tournament.initialModel
   }
 
 type alias TournamentLink = String

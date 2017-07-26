@@ -4,19 +4,13 @@ import Html exposing (Html, a, div, text)
 import Html.Attributes exposing (class, href)
 import Models exposing (Model)
 import Msgs exposing (Msg)
-
-view : Model -> Html Msg
-view model =
-  div [ class "container" ]
-      [ div [ class "notification" ]
-            [ text model.message ]
-      ]
+import Tournament.View.Details
 
 page : Model -> Html Msg
 page model =
   case model.route of
     Models.TournamentRoute tournamentId ->
-      view model
+      Tournament.View.Details.view { model | tournamentModel = { id = "", link = "", name = "Copa Eduardo Lawson"} }
 
     Models.NotFoundRoute ->
       notFoundView
