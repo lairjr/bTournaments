@@ -11,7 +11,12 @@ view model =
   div [ class "container" ]
       [ div [ class "notification" ]
             [ text model.tournamentModel.name ]
-      , tournamentTable model.tournamentModel
+      , div [ class "columns is-multiline" ]
+            [ div [ class "column is-two-thirds" ]
+                  [ tournamentTable model.tournamentModel ]
+            , div [ class "column" ]
+                  [ tournamentCalendar model.tournamentModel ]
+            ]
       ]
 
 tournamentTable : TournamentModel.Model -> Html Msg
@@ -37,3 +42,17 @@ teamRow team =
      , td [] [ text (toString team.win) ]
      , td [] [ text (toString team.loses) ]
      ]
+
+tournamentCalendar : TournamentModel.Model -> Html Msg
+tournamentCalendar model =
+  div [] [ div [ class "columns" ]
+               [ div [ class "column is-1" ] [ text "<" ]
+               , div [ class "column" ] [ text "09/10" ]
+               , div [ class "column is-1" ] [ text ">" ]
+               ]
+         , div [ class "tile is-ancestor is-vertical" ]
+               [ div [ class "tile is-child box" ] [ text "Jogo 1" ]
+               , div [ class "tile is-child box" ] [ text "Jogo 2" ]
+               , div [ class "tile is-child box" ] [ text "Jogo 3" ]
+               ]
+         ]
