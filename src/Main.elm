@@ -1,52 +1,28 @@
 module Main exposing (..)
 
-import Html.Attributes exposing (class)
-import Html exposing (Html, div, text, program)
+import Models exposing (Model, initialModel)
+import Msgs exposing (Msg)
+import Navigation exposing (Location)
+import Routing
+import Update exposing (update)
+import View exposing (view)
 
--- MODEL
-
-type alias Model =
-    String
-
-init : ( Model, Cmd Msg )
-init =
-    ( "Hello", Cmd.none )
-
--- MESSAGES
-
-type Msg
-    = NoOp
-
--- VIEW
-
-view : Model -> Html Msg
-view model =
-    div [ class "container" ]
-        [ div [ class "notification" ]
-              [ text model ]
-        ]
-
--- UPDATE
-
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    case msg of
-        NoOp ->
-            ( model, Cmd.none )
-
--- SUBSCRIPTIONS
+init : Location -> ( Model, Cmd Msg )
+init location =
+  let
+    currentRoute = Routing.parseLocation location
+  in
+    ( initialModel currentRoute, Cmd.none )
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
 
--- MAIN
-
 main : Program Never Model Msg
 main =
-    program
-        { init = init
-        , view = view
-        , update = update
-        , subscriptions = subscriptions
-        }
+  Navigation.program Msgs.OnLocationChange
+    { init = init
+    , view = view
+    , update = update
+    , subscriptions = subscriptions
+    }
