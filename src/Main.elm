@@ -1,41 +1,32 @@
 module Main exposing (..)
 
+import Html.Attributes exposing (class)
 import Html exposing (Html, div, text, program)
-
 
 -- MODEL
 
-
 type alias Model =
     String
-
 
 init : ( Model, Cmd Msg )
 init =
     ( "Hello", Cmd.none )
 
-
-
 -- MESSAGES
-
 
 type Msg
     = NoOp
 
-
-
 -- VIEW
-
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ text model ]
-
-
+    div [ class "container" ]
+        [ div [ class "notification" ]
+              [ text model ]
+        ]
 
 -- UPDATE
-
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -43,19 +34,13 @@ update msg model =
         NoOp ->
             ( model, Cmd.none )
 
-
-
 -- SUBSCRIPTIONS
-
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
 
-
-
 -- MAIN
-
 
 main : Program Never Model Msg
 main =
