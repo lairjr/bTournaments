@@ -10,7 +10,7 @@ page : Model -> Html Msg
 page model =
   case model.route of
     Models.TournamentRoute tournamentId ->
-      Tournament.View.Details.view { model | tournamentModel = { id = "", link = "", name = "Copa Eduardo Lawson"} }
+      Tournament.View.Details.view model
 
     Models.NotFoundRoute ->
       notFoundView
