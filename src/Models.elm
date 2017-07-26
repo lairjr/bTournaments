@@ -11,6 +11,8 @@ initialModel route =
   , route = route
   }
 
+type alias TournamentLink = String
+
 type Route
-  = PlayersRoute
+  = TournamentRoute TournamentLink
   | NotFoundRoute

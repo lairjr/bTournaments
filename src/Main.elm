@@ -5,7 +5,7 @@ import Msgs exposing (Msg)
 import Navigation exposing (Location)
 import Routing
 import Update exposing (update)
-import View exposing (view)
+import View exposing (page)
 
 init : Location -> ( Model, Cmd Msg )
 init location =
@@ -22,7 +22,7 @@ main : Program Never Model Msg
 main =
   Navigation.program Msgs.OnLocationChange
     { init = init
-    , view = view
+    , view = page
     , update = update
     , subscriptions = subscriptions
     }
