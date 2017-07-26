@@ -7,3 +7,10 @@ services:
     - "8000:8000"
     volumes:
     - ./src:/webapp/src
+  api:
+    build: ./stub-api
+    command: node api.js
+    ports:
+    - "4000:4000"
+    volumes:
+    - ./stub-api/db.json:/api/db.json
