@@ -4,6 +4,7 @@ import Html exposing (Html, div, table, tbody, td, text, th, thead, tr)
 import Html.Attributes exposing (class)
 import Msgs exposing (Msg)
 import Models as Root
+import RemoteData exposing (WebData)
 import Tournament.Model as TournamentModel
 
 view : Root.Model -> Html Msg
@@ -21,17 +22,28 @@ view model =
 
 tournamentTable : TournamentModel.Model -> Html Msg
 tournamentTable model =
-  table [ class "table" ]
-        [ thead []
-                [ th [] [ text "Pos" ]
-                , th [] [ text "Team" ]
-                , th [] [ text "Average" ]
-                , th [] [ text "W" ]
-                , th [] [ text "L" ]
-                ]
-        , tbody []
-                (List.map teamRow model.teams)
-        ]
+  case model.teams of
+    RemoteData.NotAsked ->
+      text ""
+
+    RemoteData.Loading ->
+      text "Loading..."
+
+    RemoteData.Success teams ->
+      table [ class "table" ]
+            [ thead []
+                    [ th [] [ text "Pos" ]
+                    , th [] [ text "Team" ]
+                    , th [] [ text "Average" ]
+                    , th [] [ text "W" ]
+                    , th [] [ text "L" ]
+                    ]
+            , tbody []
+                    (List.map teamRow teams)
+            ]
+
+    RemoteData.Failure error ->
+      text (toString error)
 
 teamRow : TournamentModel.Team -> Html Msg
 teamRow team =

@@ -1,14 +1,17 @@
 module Tournament.Model exposing (..)
 
+import RemoteData exposing (WebData)
+
 type alias Model =
   { id : String
   , link : String
   , name : String
-  , teams : List Team
+  , teams : WebData (List Team)
   }
 
 type alias Team =
-  { name : String
+  { id : String
+  , name : String
   , average: Float
   , win : Int
   , loses : Int
@@ -19,5 +22,5 @@ initialModel =
   { id = ""
   , link = ""
   , name = "Copa Eduardo Lawson"
-  , teams = [ { name = "Titios", average = 9.2, win = 10, loses = 2 } ]
+  , teams = RemoteData.Loading
   }
