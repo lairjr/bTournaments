@@ -12,7 +12,7 @@ init location =
   let
     currentRoute = Routing.parseLocation location
   in
-    ( initialModel currentRoute, Cmd.none )
+    ( initialModel currentRoute, Update.updateCmd (Msgs.OnLocationChange location) )
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
