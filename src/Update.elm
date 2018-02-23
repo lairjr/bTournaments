@@ -30,7 +30,7 @@ updateCmd msg =
         |> Cmd.map tournamentTranslator
 
     OnLocationChange location ->
-      TournamentUpdate.updateCmd TournamentMsgs.FetchTeams
+      TournamentUpdate.updateCmd TournamentMsgs.FetchTournament
         |> Cmd.map tournamentTranslator
 
     _ ->

@@ -7,6 +7,31 @@ import RemoteData
 import Tournament.Model as TournamentModel
 import Tournament.Msgs as TournamentMsgs
 
+fetchGamesCmd : Cmd TournamentMsgs.InternalMsg
+fetchGamesCmd =
+    Http.get fetchGamesCmdUrl gamesDecoder
+      |> RemoteData.sendRequest
+      |> Cmd.map TournamentMsgs.OnFetchGames
+
+fetchGamesCmdUrl : String
+fetchGamesCmdUrl =
+    "http://localhost:4000/games"
+
+gamesDecoder : Decode.Decoder (List TournamentModel.Game)
+gamesDecoder =
+  Decode.list gameDecoder
+
+gameDecoder : Decode.Decoder TournamentModel.Game
+gameDecoder =
+  decode TournamentModel.Game
+    |> required "id" Decode.string
+    |> required "awayTeam" Decode.string
+    |> required "awayScore" Decode.int
+    |> required "homeTeam" Decode.string
+    |> required "homeScore" Decode.int
+    |> required "date" Decode.string
+
+
 fetchTeamsCmd : Cmd TournamentMsgs.InternalMsg
 fetchTeamsCmd =
   Http.get fetchTeamsCmdUrl teamsDecoder

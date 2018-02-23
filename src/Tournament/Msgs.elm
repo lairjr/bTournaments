@@ -5,7 +5,8 @@ import Tournament.Model as TournamentModel
 
 type InternalMsg
   = NoOp
-  | FetchTeams
+  | FetchTournament
+  | OnFetchGames (WebData (List TournamentModel.Game))
   | OnFetchTeams (WebData (List TournamentModel.Team))
 
 type Msg
