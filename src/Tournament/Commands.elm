@@ -2,6 +2,7 @@ module Tournament.Commands exposing (..)
 
 import Http
 import Json.Decode as Decode
+import Json.Decode.Extra as DecodeExtra
 import Json.Decode.Pipeline exposing (decode, required)
 import RemoteData
 import Tournament.Model as TournamentModel
@@ -29,7 +30,7 @@ gameDecoder =
     |> required "awayScore" Decode.int
     |> required "homeTeam" Decode.string
     |> required "homeScore" Decode.int
-    |> required "date" Decode.string
+    |> required "date" DecodeExtra.date
 
 
 fetchTeamsCmd : Cmd TournamentMsgs.InternalMsg

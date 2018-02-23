@@ -17,7 +17,7 @@ type alias Game =
   , awayScore : Int
   , homeTeam : String
   , homeScore : Int
-  , date : String
+  , date : Date
   }
 
 type alias Team =
