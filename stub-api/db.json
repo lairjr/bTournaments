@@ -1,9 +1,12 @@
 {
-  "tournaments": [
+  "games": [
     {
       "id": "1",
-      "name": "Copa Eduardo Lawson",
-      "link": "copa-eduardo-lawson"
+      "awayScore": 70,
+      "awayTeam": "São Luís",
+      "awayScore": 71,
+      "awayTeam": "Badanha",
+      "date": "2015-05-23T18:25:43.511Z"
     }
   ],
   "teams": [
@@ -20,6 +23,13 @@
       "average": 8,
       "win": 10,
       "loses": 2
+    }
+  ],
+  "tournaments": [
+    {
+      "id": "1",
+      "name": "Copa Eduardo Lawson",
+      "link": "copa-eduardo-lawson"
     }
   ]
 }
