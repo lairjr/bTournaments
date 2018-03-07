@@ -1,6 +1,5 @@
 module Tournament.View.Details exposing (..)
 
-import Date exposing (..)
 import Html exposing (Html, div, table, tbody, td, text, th, thead, tr)
 import Html.Attributes exposing (class)
 import Msgs exposing (Msg)
