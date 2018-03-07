@@ -1,5 +1,6 @@
 module Tournament.View.Details exposing (..)
 
+import Date exposing (..)
 import Html exposing (Html, div, table, tbody, td, text, th, thead, tr)
 import Html.Attributes exposing (class)
 import Msgs exposing (Msg)
@@ -59,7 +60,7 @@ tournamentCalendar : TournamentModel.Model -> Html Msg
 tournamentCalendar model =
   div [] [ div [ class "columns" ]
                [ div [ class "column is-1" ] [ text "<" ]
-               , div [ class "column" ] [ text "09/10" ]
+               , div [ class "column" ] [ text (toString model.selectedDate)]
                , div [ class "column is-1" ] [ text ">" ]
                ]
          , div [ class "tile is-ancestor is-vertical" ]

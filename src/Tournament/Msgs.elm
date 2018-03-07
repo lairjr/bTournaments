@@ -1,5 +1,6 @@
 module Tournament.Msgs exposing(..)
 
+import Date exposing (..)
 import RemoteData exposing (WebData)
 import Tournament.Model as TournamentModel
 
@@ -8,6 +9,7 @@ type InternalMsg
   | FetchTournament
   | OnFetchGames (WebData (List TournamentModel.Game))
   | OnFetchTeams (WebData (List TournamentModel.Team))
+  | ReceiveDate Date
 
 type Msg
   = ForSelf InternalMsg

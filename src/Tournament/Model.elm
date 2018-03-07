@@ -8,6 +8,7 @@ type alias Model =
   , games : WebData (List Game)
   , link : String
   , name : String
+  , selectedDate : Maybe Date
   , teams : WebData (List Team)
   }
 
@@ -17,7 +18,7 @@ type alias Game =
   , awayScore : Int
   , homeTeam : String
   , homeScore : Int
-  , date : Date
+  , date : Maybe Date
   }
 
 type alias Team =
@@ -28,11 +29,14 @@ type alias Team =
   , loses : Int
   }
 
+type Msg = NewDate Date
+
 initialModel : Model
 initialModel =
   { id = ""
   , games = RemoteData.Loading
   , link = ""
   , name = "Copa Eduardo Lawson"
+  , selectedDate = Nothing
   , teams = RemoteData.Loading
   }
