@@ -1,5 +1,8 @@
 module Tournament.View.Details exposing (..)
 
+import Date exposing (..)
+import Date.Extra as Date
+import Debug
 import Html exposing (Html, div, table, tbody, td, text, th, thead, tr)
 import Html.Attributes exposing (class)
 import Msgs exposing (Msg)
@@ -55,16 +58,51 @@ teamRow team =
      , td [] [ text (toString team.loses) ]
      ]
 
+compareDay : Maybe Date -> TournamentModel.Game -> Bool
+compareDay date game =
+  case date of
+      Just firstDate ->
+        case game.date of
+          Just gameDate ->
+            Date.equalBy Date.Day firstDate gameDate
+
+          Nothing ->
+            False
+
+      Nothing ->
+        False
+
 tournamentCalendar : TournamentModel.Model -> Html Msg
 tournamentCalendar model =
-  div [] [ div [ class "columns" ]
-               [ div [ class "column is-1" ] [ text "<" ]
-               , div [ class "column" ] [ text (toString model.selectedDate)]
-               , div [ class "column is-1" ] [ text ">" ]
+  case model.games of
+    RemoteData.NotAsked ->
+      text ""
+
+    RemoteData.Loading ->
+      text "Loading"
+
+    RemoteData.Failure error ->
+      text (toString error)
+
+    RemoteData.Success games ->
+      let
+        selectedGames = List.filter (compareDay model.selectedDate) games
+      in
+        div [] [ div [ class "columns" ]
+                     [ div [ class "column is-1" ] [ text "<" ]
+                     , div [ class "column" ] [ text (toString model.selectedDate)]
+                     , div [ class "column is-1" ] [ text ">" ]
+                     ]
+               , div [ class "tile is-ancestor is-vertical" ]
+                     (List.map gameRow selectedGames)
                ]
-         , div [ class "tile is-ancestor is-vertical" ]
-               [ div [ class "tile is-child box" ] [ text "Jogo 1" ]
-               , div [ class "tile is-child box" ] [ text "Jogo 2" ]
-               , div [ class "tile is-child box" ] [ text "Jogo 3" ]
-               ]
-         ]
+
+gameRow : TournamentModel.Game -> Html Msg
+gameRow game =
+  div [ class "tile is-child box" ] [
+    div [ class "columns" ]
+        [ div [ class "column " ] [ text game.homeTeam ]
+        , div [ class "column " ] [ text "x" ]
+        , div [ class "column " ] [ text game.awayTeam ]
+        ]
+    ]
