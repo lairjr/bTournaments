@@ -59,19 +59,14 @@ teamRow team =
      , td [] [ text (toString team.loses) ]
      ]
 
-compareDay : Maybe Date -> TournamentModel.Game -> Bool
+compareDay : Date -> TournamentModel.Game -> Bool
 compareDay date game =
-  case date of
-      Just firstDate ->
-        case game.date of
-          Just gameDate ->
-            Date.equalBy Date.Day firstDate gameDate
+  case game.date of
+    Just gameDate ->
+      Date.equalBy Date.Day date gameDate
 
-          Nothing ->
-            False
-
-      Nothing ->
-        False
+    Nothing ->
+      False
 
 tournamentCalendar : TournamentModel.Model -> Html Msg
 tournamentCalendar model =
@@ -86,17 +81,22 @@ tournamentCalendar model =
       text (toString error)
 
     RemoteData.Success games ->
-      let
-        selectedGames = List.filter (compareDay model.selectedDate) games
-      in
-        div [] [ div [ class "columns" ]
-                     [ div [ class "column is-1" ] [ button [ onClick (Msgs.MsgForTournament (TournamentMsgs.UpdateSelectedDate -1)) ] [ text "<" ] ]
-                     , div [ class "column" ] [ text (toString model.selectedDate)]
-                     , div [ class "column is-1" ] [ button [ onClick (Msgs.MsgForTournament (TournamentMsgs.UpdateSelectedDate 1)) ] [ text ">" ] ]
-                     ]
-               , div [ class "tile is-ancestor is-vertical" ]
-                     (List.map gameRow selectedGames)
-               ]
+      case model.selectedDate of
+        Just selectedDate ->
+          let
+            selectedGames = List.filter (compareDay selectedDate) games
+          in
+            div [] [ div [ class "columns" ]
+                         [ div [ class "column is-1" ] [ button [ onClick (Msgs.MsgForTournament (TournamentMsgs.UpdateSelectedDate -1)) ] [ text "<" ] ]
+                         , div [ class "column" ] [ text (String.concat [ toString (Date.day selectedDate), "/", toString (Date.month selectedDate) ]) ]
+                         , div [ class "column is-1" ] [ button [ onClick (Msgs.MsgForTournament (TournamentMsgs.UpdateSelectedDate 1)) ] [ text ">" ] ]
+                         ]
+                   , div [ class "tile is-ancestor is-vertical" ]
+                         (List.map gameRow selectedGames)
+                   ]
+
+        Nothing ->
+          text "Error"
 
 gameRow : TournamentModel.Game -> Html Msg
 gameRow game =
