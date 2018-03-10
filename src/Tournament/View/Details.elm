@@ -2,13 +2,14 @@ module Tournament.View.Details exposing (..)
 
 import Date exposing (..)
 import Date.Extra as Date
-import Debug
-import Html exposing (Html, div, table, tbody, td, text, th, thead, tr)
+import Html exposing (Html, button, div, table, tbody, td, text, th, thead, tr)
 import Html.Attributes exposing (class)
+import Html.Events exposing (onClick)
 import Msgs exposing (Msg)
 import Models as Root
 import RemoteData exposing (WebData)
 import Tournament.Model as TournamentModel
+import Tournament.Msgs as TournamentMsgs
 
 view : Root.Model -> Html Msg
 view model =
@@ -89,9 +90,9 @@ tournamentCalendar model =
         selectedGames = List.filter (compareDay model.selectedDate) games
       in
         div [] [ div [ class "columns" ]
-                     [ div [ class "column is-1" ] [ text "<" ]
+                     [ div [ class "column is-1" ] [ button [ onClick (Msgs.MsgForTournament (TournamentMsgs.UpdateSelectedDate -1)) ] [ text "<" ] ]
                      , div [ class "column" ] [ text (toString model.selectedDate)]
-                     , div [ class "column is-1" ] [ text ">" ]
+                     , div [ class "column is-1" ] [ button [ onClick (Msgs.MsgForTournament (TournamentMsgs.UpdateSelectedDate 1)) ] [ text ">" ] ]
                      ]
                , div [ class "tile is-ancestor is-vertical" ]
                      (List.map gameRow selectedGames)

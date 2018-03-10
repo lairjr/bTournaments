@@ -10,6 +10,7 @@ type InternalMsg
   | OnFetchGames (WebData (List TournamentModel.Game))
   | OnFetchTeams (WebData (List TournamentModel.Team))
   | ReceiveDate Date
+  | UpdateSelectedDate Int
 
 type Msg
   = ForSelf InternalMsg

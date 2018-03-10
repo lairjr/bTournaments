@@ -1,6 +1,7 @@
 module Tournament.Update exposing(..)
 
 import Date exposing (..)
+import Date.Extra as Date
 import Tournament.Model as TournamentModel
 import Tournament.Msgs as TournamentMsgs
 import Tournament.Commands exposing(fetchGamesCmd, fetchTeamsCmd)
@@ -17,6 +18,13 @@ updateModel msg model =
       { model | teams = teams }
     TournamentMsgs.ReceiveDate date ->
       { model | selectedDate = Just date }
+    TournamentMsgs.UpdateSelectedDate unites ->
+      case model.selectedDate of
+        Just date ->
+          { model | selectedDate = Just (Date.add Date.Day unites date) }
+        Nothing ->
+          model
+
     _ ->
       model
 
