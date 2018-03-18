@@ -21,6 +21,6 @@ type alias TournamentLink =
 
 
 type Route
-    = TournamentRoute TournamentLink
+    = TournamentHomeRoute TournamentLink
     | TournamentScheduleRoute TournamentLink
     | NotFoundRoute

@@ -1,4 +1,4 @@
-module Tournament.View.Details exposing (..)
+module Tournament.View.Home exposing (..)
 
 import Date exposing (..)
 import Date.Extra as Date

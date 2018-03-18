@@ -8,7 +8,7 @@ import UrlParser exposing (..)
 matchers : Parser (Route -> a) a
 matchers =
     oneOf
-        [ map TournamentRoute (s "tournament" </> string)
+        [ map TournamentHomeRoute (s "tournament" </> string)
         , map TournamentScheduleRoute (s "tournament" </> string </> s "schedule")
         ]
 
