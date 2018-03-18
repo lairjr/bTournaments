@@ -1,29 +1,34 @@
-module Tournament.Msgs exposing(..)
+module Tournament.Msgs exposing (..)
 
 import Date exposing (..)
 import RemoteData exposing (WebData)
 import Tournament.Model as TournamentModel
 
+
 type InternalMsg
-  = NoOp
-  | FetchTournament
-  | OnFetchGames (WebData (List TournamentModel.Game))
-  | OnFetchTeams (WebData (List TournamentModel.Team))
-  | ReceiveDate Date
-  | UpdateSelectedDate Int
+    = NoOp
+    | FetchTournament
+    | OnFetchGames (WebData (List TournamentModel.Game))
+    | OnFetchTeams (WebData (List TournamentModel.Team))
+    | ReceiveDate Date
+    | UpdateSelectedDate Int
+
 
 type Msg
-  = ForSelf InternalMsg
+    = ForSelf InternalMsg
+
 
 type alias TranslationDictionary msg =
-  { onInternalMessage : InternalMsg -> msg
-  }
+    { onInternalMessage : InternalMsg -> msg
+    }
+
 
 type alias Translator msg =
-  Msg -> msg
+    Msg -> msg
+
 
 translator : TranslationDictionary msg -> Translator msg
 translator { onInternalMessage } msg =
-  case msg of
-    ForSelf internalMsg ->
-      onInternalMessage internalMsg
+    case msg of
+        ForSelf internalMsg ->
+            onInternalMessage internalMsg

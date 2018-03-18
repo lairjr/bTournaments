@@ -6,18 +6,20 @@ import Models exposing (Model)
 import Msgs exposing (Msg)
 import Tournament.View.Details
 
+
 page : Model -> Html Msg
 page model =
-  case model.route of
-    Models.TournamentRoute tournamentId ->
-      Tournament.View.Details.view model
+    case model.route of
+        Models.TournamentRoute tournamentId ->
+            Tournament.View.Details.view model
 
-    Models.NotFoundRoute ->
-      notFoundView
+        Models.NotFoundRoute ->
+            notFoundView
+
 
 notFoundView : Html msg
 notFoundView =
-  div [ class "container" ]
-      [ div [ class "notification" ]
-            [ a [ href "#tournament/copa-eduardo-lawson"] [ text "Copa Eduardo Lawson"] ]
-      ]
+    div [ class "container" ]
+        [ div [ class "notification" ]
+            [ a [ href "#tournament/copa-eduardo-lawson" ] [ text "Copa Eduardo Lawson" ] ]
+        ]

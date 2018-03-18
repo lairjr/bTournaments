@@ -2,19 +2,24 @@ module Models exposing (..)
 
 import Tournament.Model as Tournament
 
+
 type alias Model =
     { route : Route
-    , tournamentModel: Tournament.Model
+    , tournamentModel : Tournament.Model
     }
+
 
 initialModel : Route -> Model
 initialModel route =
-  { route = route
-  , tournamentModel = Tournament.initialModel
-  }
+    { route = route
+    , tournamentModel = Tournament.initialModel
+    }
 
-type alias TournamentLink = String
+
+type alias TournamentLink =
+    String
+
 
 type Route
-  = TournamentRoute TournamentLink
-  | NotFoundRoute
+    = TournamentRoute TournamentLink
+    | NotFoundRoute
