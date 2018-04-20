@@ -8,7 +8,6 @@ import Tournament.Model as TournamentModel
 type InternalMsg
     = NoOp
     | FetchTournament
-    | OnFetchGames (WebData (List TournamentModel.Game))
     | OnFetchSchedule (WebData (List TournamentModel.ScheduleDay))
     | OnFetchTeams (WebData (List TournamentModel.Team))
     | ReceiveDate Date

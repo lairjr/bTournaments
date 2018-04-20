@@ -6,7 +6,6 @@ import RemoteData exposing (WebData)
 
 type alias Model =
     { id : String
-    , games : WebData (List Game)
     , link : String
     , name : String
     , schedule : WebData (List ScheduleDay)
@@ -47,7 +46,6 @@ type Msg
 initialModel : Model
 initialModel =
     { id = ""
-    , games = RemoteData.Loading
     , link = ""
     , name = "Copa Eduardo Lawson"
     , schedule = RemoteData.Loading

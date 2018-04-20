@@ -63,19 +63,14 @@ teamRow team =
         ]
 
 
-compareDay : Date -> TournamentModel.Game -> Bool
-compareDay date game =
-    case game.date of
-        Just gameDate ->
-            Date.equalBy Date.Day date gameDate
-
-        Nothing ->
-            False
+compareDay : Date -> TournamentModel.ScheduleDay -> Bool
+compareDay date scheduleDay =
+    Date.equalBy Date.Day date scheduleDay.date
 
 
 tournamentCalendar : TournamentModel.Model -> Html Msg
 tournamentCalendar model =
-    case model.games of
+    case model.schedule of
         RemoteData.NotAsked ->
             text ""
 
@@ -85,12 +80,15 @@ tournamentCalendar model =
         RemoteData.Failure error ->
             text (toString error)
 
-        RemoteData.Success games ->
+        RemoteData.Success schedule ->
             case model.selectedDate of
                 Just selectedDate ->
                     let
-                        selectedGames =
-                            List.filter (compareDay selectedDate) games
+                        selectedScheduleHead =
+                            List.head (List.filter (compareDay selectedDate) schedule)
+
+                        selectedSchedule =
+                            Maybe.withDefault { date = selectedDate, games = [] } selectedScheduleHead
                     in
                     div []
                         [ div [ class "columns" ]
@@ -99,7 +97,7 @@ tournamentCalendar model =
                             , div [ class "column is-1" ] [ button [ onClick (Msgs.MsgForTournament (TournamentMsgs.UpdateSelectedDate 1)) ] [ text ">" ] ]
                             ]
                         , div [ class "tile is-ancestor is-vertical" ]
-                            (List.map gameRow selectedGames)
+                            (List.map gameRow selectedSchedule.games)
                         ]
 
                 Nothing ->
