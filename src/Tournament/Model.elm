@@ -9,6 +9,7 @@ type alias Model =
     , games : WebData (List Game)
     , link : String
     , name : String
+    , schedule : WebData (List ScheduleDay)
     , selectedDate : Maybe Date
     , teams : WebData (List Team)
     }
@@ -33,6 +34,12 @@ type alias Team =
     }
 
 
+type alias ScheduleDay =
+    { date : Date
+    , games : List Game
+    }
+
+
 type Msg
     = NewDate Date
 
@@ -43,6 +50,7 @@ initialModel =
     , games = RemoteData.Loading
     , link = ""
     , name = "Copa Eduardo Lawson"
+    , schedule = RemoteData.Loading
     , selectedDate = Nothing
     , teams = RemoteData.Loading
     }

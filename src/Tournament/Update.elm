@@ -3,7 +3,7 @@ module Tournament.Update exposing (..)
 import Date exposing (..)
 import Date.Extra as Date
 import Task
-import Tournament.Commands exposing (fetchGamesCmd, fetchTeamsCmd)
+import Tournament.Commands exposing (fetchGamesCmd, fetchScheduleCmd, fetchTeamsCmd)
 import Tournament.Model as TournamentModel
 import Tournament.Msgs as TournamentMsgs
 
@@ -16,6 +16,9 @@ updateModel msg model =
 
         TournamentMsgs.OnFetchGames games ->
             { model | games = games }
+
+        TournamentMsgs.OnFetchSchedule schedule ->
+            { model | schedule = schedule }
 
         TournamentMsgs.OnFetchTeams teams ->
             { model | teams = teams }
@@ -39,7 +42,7 @@ updateCmd : TournamentMsgs.InternalMsg -> Cmd TournamentMsgs.InternalMsg
 updateCmd msg =
     case msg of
         TournamentMsgs.FetchTournament ->
-            Cmd.batch [ fetchGamesCmd, fetchTeamsCmd, Task.perform TournamentMsgs.ReceiveDate Date.now ]
+            Cmd.batch [ fetchGamesCmd, fetchScheduleCmd, fetchTeamsCmd, Task.perform TournamentMsgs.ReceiveDate Date.now ]
 
         _ ->
             Cmd.none

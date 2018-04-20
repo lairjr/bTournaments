@@ -9,6 +9,30 @@ import Tournament.Model as TournamentModel
 import Tournament.Msgs as TournamentMsgs
 
 
+fetchScheduleCmd : Cmd TournamentMsgs.InternalMsg
+fetchScheduleCmd =
+    Http.get fetchScheduleCmdUrl scheduleDecoder
+        |> RemoteData.sendRequest
+        |> Cmd.map TournamentMsgs.OnFetchSchedule
+
+
+fetchScheduleCmdUrl : String
+fetchScheduleCmdUrl =
+    "http://localhost:4000/schedules"
+
+
+scheduleDecoder : Decode.Decoder (List TournamentModel.ScheduleDay)
+scheduleDecoder =
+    Decode.list scheduleDayDecoder
+
+
+scheduleDayDecoder : Decode.Decoder TournamentModel.ScheduleDay
+scheduleDayDecoder =
+    decode TournamentModel.ScheduleDay
+        |> required "date" DecodeExtra.date
+        |> required "games" (Decode.list gameDecoder)
+
+
 fetchGamesCmd : Cmd TournamentMsgs.InternalMsg
 fetchGamesCmd =
     Http.get fetchGamesCmdUrl gamesDecoder
