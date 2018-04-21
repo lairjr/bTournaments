@@ -1,6 +1,6 @@
 module View exposing (..)
 
-import Common.NavBar exposing (navBar)
+import Common.Layout exposing (mainView)
 import Html exposing (Html, a, div, text)
 import Html.Attributes exposing (class, href)
 import Models exposing (Model)
@@ -13,22 +13,13 @@ page : Model -> Html Msg
 page model =
     case model.route of
         Models.TournamentHomeRoute tournamentId ->
-            pageGlobalStructure (Tournament.View.Home.view model)
+            mainView (Tournament.View.Home.view model)
 
         Models.TournamentScheduleRoute tournamentId ->
-            pageGlobalStructure (Tournament.View.Schedule.view model)
+            mainView (Tournament.View.Schedule.view model)
 
         Models.NotFoundRoute ->
             notFoundView
-
-
-pageGlobalStructure : Html Msg -> Html Msg
-pageGlobalStructure content =
-    div []
-        [ navBar
-        , content
-        , text "Footer"
-        ]
 
 
 notFoundView : Html msg
