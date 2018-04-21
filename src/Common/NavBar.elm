@@ -1,7 +1,7 @@
 module Common.NavBar exposing (..)
 
-import Html exposing (Html, a, div, nav, span, text)
-import Html.Attributes exposing (class)
+import Html exposing (Html, a, div, img, nav, span, text)
+import Html.Attributes exposing (class, src)
 import Msgs exposing (Msg)
 
 
@@ -9,7 +9,9 @@ navBar : Html Msg
 navBar =
     nav [ class "navbar" ]
         [ div [ class "navbar-brand" ]
-            [ span [] [ text "My Tournaments" ]
+            [ a [ class "navbar-item" ]
+                [ img [ src "static/logo.png" ] []
+                ]
             ]
         ]
 

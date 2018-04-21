@@ -7,6 +7,7 @@ services:
     - "8000:8000"
     volumes:
     - ./src:/webapp/src
+    - ./static:/webapp/static
   api:
     build: ./stub-api
     command: node api.js
