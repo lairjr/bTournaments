@@ -1,6 +1,5 @@
 module Tournament.View.Home exposing (..)
 
-import Components.Breadcrumb exposing (breadcrumb)
 import Date exposing (..)
 import Date.Extra as Date
 import Html exposing (Html, button, div, table, tbody, td, text, th, thead, tr)
@@ -9,6 +8,7 @@ import Html.Events exposing (onClick)
 import Models as Root
 import Msgs exposing (Msg)
 import RemoteData exposing (WebData)
+import Tournament.Components.NavBar exposing (tournamentNavBar)
 import Tournament.Model as TournamentModel
 import Tournament.Msgs as TournamentMsgs
 
@@ -16,7 +16,7 @@ import Tournament.Msgs as TournamentMsgs
 view : Root.Model -> Html Msg
 view model =
     div [ class "container" ]
-        [ breadcrumb model.tournamentModel.name
+        [ tournamentNavBar model.tournamentModel.name
         , div [ class "columns is-multiline" ]
             [ div [ class "column is-two-thirds" ]
                 [ tournamentTable model.tournamentModel ]

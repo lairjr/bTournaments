@@ -1,6 +1,6 @@
 module View exposing (..)
 
-import Components.NavBar exposing (navBar)
+import Common.NavBar exposing (navBar)
 import Html exposing (Html, a, div, text)
 import Html.Attributes exposing (class, href)
 import Models exposing (Model)

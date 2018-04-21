@@ -1,4 +1,4 @@
-module Components.NavBar exposing (..)
+module Common.NavBar exposing (..)
 
 import Html exposing (Html, a, div, nav, span, text)
 import Html.Attributes exposing (class)
@@ -10,11 +10,6 @@ navBar =
     nav [ class "navbar" ]
         [ div [ class "navbar-brand" ]
             [ span [] [ text "My Tournaments" ]
-            , a [ class "navbar-burger" ]
-                [ span [] []
-                , span [] []
-                , span [] []
-                ]
             ]
         ]
 
