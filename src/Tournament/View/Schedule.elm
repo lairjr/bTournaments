@@ -10,7 +10,7 @@ import Tournament.Model as TournamentModel
 
 view : Root.Model -> Html Msg
 view model =
-    div [ class "container" ]
+    div []
         [ viewSchedule model.tournamentModel ]
 
 

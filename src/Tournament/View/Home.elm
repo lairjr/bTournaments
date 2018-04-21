@@ -2,7 +2,7 @@ module Tournament.View.Home exposing (..)
 
 import Date exposing (..)
 import Date.Extra as Date
-import Html exposing (Html, button, div, table, tbody, td, text, th, thead, tr)
+import Html exposing (Html, button, div, h3, section, table, tbody, td, text, th, thead, tr)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import Models as Root
@@ -15,8 +15,11 @@ import Tournament.Msgs as TournamentMsgs
 
 view : Root.Model -> Html Msg
 view model =
-    div [ class "container" ]
+    div []
         [ tournamentNavBar model.tournamentModel.name
+        , section [ class "section" ]
+            [ h3 [ class "title is-3" ] [ text "Tabela" ]
+            ]
         , div [ class "columns is-multiline" ]
             [ div [ class "column is-two-thirds" ]
                 [ tournamentTable model.tournamentModel ]
