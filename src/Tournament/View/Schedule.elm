@@ -1,5 +1,6 @@
 module Tournament.View.Schedule exposing (..)
 
+import Date.Extra as Date
 import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
 import Models as Root
@@ -36,20 +37,38 @@ viewSchedule model =
 
 tournamentSchedule : List TournamentModel.ScheduleDay -> Html msg
 tournamentSchedule scheduleDays =
-    div [] (List.map dayRow scheduleDays)
+    div [ class "columns is-multiline" ] (List.map dayRow scheduleDays)
 
 
 dayRow : TournamentModel.ScheduleDay -> Html msg
 dayRow scheduleDay =
-    div [ class "columns is-multiline" ]
-        [ div [ class "column" ] [ text (toString scheduleDay.date) ]
-        , div [ class "column is-10" ]
-            [ div [ class "columns is-multiline" ]
-                (List.map gameRow scheduleDay.games)
+    div [ class "column is-12" ]
+        [ div [ class "columns is-multiline" ]
+            [ div [ class "column" ] [ text (Date.toFormattedString "EEEE, MMMM d, y" scheduleDay.date) ]
+            , div [ class "column is-10" ]
+                [ div [ class "columns is-multiline" ]
+                    (List.map gameRow scheduleDay.games)
+                ]
             ]
         ]
 
 
 gameRow : TournamentModel.Game -> Html msg
 gameRow game =
-    div [ class "column is-12" ] [ text ("Jogo " ++ toString game) ]
+    div [ class "column is-12" ]
+        [ div [ class "columns" ]
+            [ div [ class "column has-text-centered is-2" ]
+                [ text game.homeTeam
+                ]
+            , div [ class "column has-text-centered is-2" ]
+                [ text (toString game.homeScore)
+                ]
+            , div [ class "column has-text-centered is-2" ] [ text "x" ]
+            , div [ class "column has-text-centered is-2" ]
+                [ text (toString game.awayScore)
+                ]
+            , div [ class "column has-text-centered is-2" ]
+                [ text game.awayTeam
+                ]
+            ]
+        ]
