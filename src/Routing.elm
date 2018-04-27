@@ -9,6 +9,7 @@ matchers : Parser (Route -> a) a
 matchers =
     oneOf
         [ map TournamentHomeRoute (s "tournament" </> string)
+        , map TournamentHomeRoute (s "tournament" </> string </> s "home")
         , map TournamentScheduleRoute (s "tournament" </> string </> s "schedule")
         ]
 
