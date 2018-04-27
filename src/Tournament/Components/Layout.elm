@@ -1,6 +1,6 @@
-module Tournament.Components.NavBar exposing (..)
+module Tournament.Components.Layout exposing (..)
 
-import Html exposing (Html, a, div, nav, span, text)
+import Html exposing (Html, a, div, nav, p, span, strong, text)
 import Html.Attributes exposing (class, href)
 import Msgs exposing (Msg)
 
@@ -23,5 +23,14 @@ tournamentNavBar title =
                     [ a [ class "navbar-item", href "schedule" ] [ text "Schedule" ]
                     ]
                 ]
+            ]
+        ]
+
+
+tournamentSectionTitle : String -> Html Msg
+tournamentSectionTitle title =
+    nav [ class "level" ]
+        [ div [ class "level-left" ]
+            [ p [ class "subtitle is-5" ] [ strong [] [ text title ] ]
             ]
         ]

@@ -5,13 +5,17 @@ import Html.Attributes exposing (class)
 import Models as Root
 import Msgs exposing (Msg)
 import RemoteData exposing (WebData)
+import Tournament.Components.Layout exposing (tournamentNavBar, tournamentSectionTitle)
 import Tournament.Model as TournamentModel
 
 
 view : Root.Model -> Html Msg
 view model =
     div []
-        [ viewSchedule model.tournamentModel ]
+        [ tournamentNavBar model.tournamentModel.name
+        , tournamentSectionTitle "Agenda"
+        , viewSchedule model.tournamentModel
+        ]
 
 
 viewSchedule : TournamentModel.Model -> Html msg

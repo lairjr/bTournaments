@@ -8,7 +8,7 @@ import Html.Events exposing (onClick)
 import Models as Root
 import Msgs exposing (Msg)
 import RemoteData exposing (WebData)
-import Tournament.Components.NavBar exposing (tournamentNavBar)
+import Tournament.Components.Layout exposing (tournamentNavBar, tournamentSectionTitle)
 import Tournament.Model as TournamentModel
 import Tournament.Msgs as TournamentMsgs
 
@@ -17,11 +17,7 @@ view : Root.Model -> Html Msg
 view model =
     div []
         [ tournamentNavBar model.tournamentModel.name
-        , nav [ class "level" ]
-            [ div [ class "level-left" ]
-                [ p [ class "subtitle is-5" ] [ strong [] [ text "Tabela" ] ]
-                ]
-            ]
+        , tournamentSectionTitle "Tabela"
         , div [ class "columns is-multiline" ]
             [ div [ class "column is-two-thirds" ]
                 [ tournamentTable model.tournamentModel ]
