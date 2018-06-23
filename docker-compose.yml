@@ -10,7 +10,7 @@ services:
     - ./static:/webapp/static
   api:
     build: ./stub-api
-    command: node api.js
+    command: node api.js --watch
     ports:
     - "4000:4000"
     volumes:

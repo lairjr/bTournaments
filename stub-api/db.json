@@ -80,6 +80,25 @@
               "loses": 2
             }
           ]
+        },
+        {
+          "name": "Grupo B",
+          "teams": [
+            {
+              "id": "3",
+              "name": "Titios",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "4",
+              "name": "Freeday",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            }
+          ]
         }
       ]
     }

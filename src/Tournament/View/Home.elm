@@ -28,7 +28,7 @@ view model =
                 , tournamentSectionTitle "Tabela"
                 , div [ class "columns is-multiline" ]
                     [ div [ class "column is-two-thirds" ]
-                        [ tournamentTable model.tournamentModel ]
+                        (List.map group tournament.standings)
                     , div [ class "column" ]
                         [ tournamentCalendar model.tournamentModel ]
                     ]
@@ -38,30 +38,22 @@ view model =
             text (toString error)
 
 
-tournamentTable : TournamentModel.Model -> Html Msg
-tournamentTable model =
-    case model.teams of
-        RemoteData.NotAsked ->
-            text ""
-
-        RemoteData.Loading ->
-            text "Loading..."
-
-        RemoteData.Success teams ->
-            table [ class "table" ]
-                [ thead []
-                    [ th [] [ text "Pos" ]
-                    , th [] [ text "Team" ]
-                    , th [] [ text "Average" ]
-                    , th [] [ text "W" ]
-                    , th [] [ text "L" ]
-                    ]
-                , tbody []
-                    (List.map teamRow teams)
+group : TournamentModel.Group -> Html Msg
+group group =
+    div []
+        [ text group.name
+        , table [ class "table" ]
+            [ thead []
+                [ th [] [ text "Pos" ]
+                , th [] [ text "Team" ]
+                , th [] [ text "Average" ]
+                , th [] [ text "W" ]
+                , th [] [ text "L" ]
                 ]
-
-        RemoteData.Failure error ->
-            text (toString error)
+            , tbody []
+                (List.map teamRow group.teams)
+            ]
+        ]
 
 
 teamRow : TournamentModel.Team -> Html Msg
