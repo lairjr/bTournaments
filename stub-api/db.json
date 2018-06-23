@@ -60,7 +60,28 @@
     {
       "id": "1",
       "name": "Copa Eduardo Lawson",
-      "link": "copa-eduardo-lawson"
+      "link": "copa-eduardo-lawson",
+      "standings": [
+        {
+          "name": "Grupo A",
+          "teams": [
+            {
+              "id": "2",
+              "name": "São Luís",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "1",
+              "name": "Badanha",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            }
+          ]
+        }
+      ]
     }
   ]
 }

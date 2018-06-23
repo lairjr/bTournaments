@@ -5,12 +5,24 @@ import RemoteData exposing (WebData)
 
 
 type alias Model =
+    { schedule : WebData (List ScheduleDay)
+    , selectedDate : Maybe Date
+    , teams : WebData (List Team)
+    , tournament : WebData Tournament
+    }
+
+
+type alias Tournament =
     { id : String
     , link : String
     , name : String
-    , schedule : WebData (List ScheduleDay)
-    , selectedDate : Maybe Date
-    , teams : WebData (List Team)
+    , standings : List Group
+    }
+
+
+type alias Group =
+    { name : String
+    , teams : List Team
     }
 
 
@@ -45,10 +57,8 @@ type Msg
 
 initialModel : Model
 initialModel =
-    { id = ""
-    , link = ""
-    , name = "Copa Eduardo Lawson"
-    , schedule = RemoteData.Loading
+    { schedule = RemoteData.Loading
     , selectedDate = Nothing
+    , tournament = RemoteData.Loading
     , teams = RemoteData.Loading
     }

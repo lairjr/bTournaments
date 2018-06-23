@@ -69,3 +69,31 @@ teamDecoder =
         |> required "average" Decode.float
         |> required "win" Decode.int
         |> required "loses" Decode.int
+
+
+fetchTournamentCmdUrl : String
+fetchTournamentCmdUrl =
+    "http://localhost:4000/tournaments/1"
+
+
+fetchTournamentCmd : Cmd TournamentMsgs.InternalMsg
+fetchTournamentCmd =
+    Http.get fetchTournamentCmdUrl tournamentDecoder
+        |> RemoteData.sendRequest
+        |> Cmd.map TournamentMsgs.OnFetchTournament
+
+
+tournamentDecoder : Decode.Decoder TournamentModel.Tournament
+tournamentDecoder =
+    Decode.map4 TournamentModel.Tournament
+        (Decode.field "id" Decode.string)
+        (Decode.field "link" Decode.string)
+        (Decode.field "name" Decode.string)
+        (Decode.field "standings" (Decode.list groupDecoder))
+
+
+groupDecoder : Decode.Decoder TournamentModel.Group
+groupDecoder =
+    Decode.map2 TournamentModel.Group
+        (Decode.field "name" Decode.string)
+        (Decode.field "teams" (Decode.list teamDecoder))

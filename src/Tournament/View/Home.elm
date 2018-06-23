@@ -15,16 +15,27 @@ import Tournament.Msgs as TournamentMsgs
 
 view : Root.Model -> Html Msg
 view model =
-    div []
-        [ tournamentNavBar model.tournamentModel.name
-        , tournamentSectionTitle "Tabela"
-        , div [ class "columns is-multiline" ]
-            [ div [ class "column is-two-thirds" ]
-                [ tournamentTable model.tournamentModel ]
-            , div [ class "column" ]
-                [ tournamentCalendar model.tournamentModel ]
-            ]
-        ]
+    case model.tournamentModel.tournament of
+        RemoteData.NotAsked ->
+            text ""
+
+        RemoteData.Loading ->
+            text "Loading"
+
+        RemoteData.Success tournament ->
+            div []
+                [ tournamentNavBar tournament.name
+                , tournamentSectionTitle "Tabela"
+                , div [ class "columns is-multiline" ]
+                    [ div [ class "column is-two-thirds" ]
+                        [ tournamentTable model.tournamentModel ]
+                    , div [ class "column" ]
+                        [ tournamentCalendar model.tournamentModel ]
+                    ]
+                ]
+
+        RemoteData.Failure error ->
+            text (toString error)
 
 
 tournamentTable : TournamentModel.Model -> Html Msg

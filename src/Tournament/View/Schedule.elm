@@ -12,11 +12,22 @@ import Tournament.Model as TournamentModel
 
 view : Root.Model -> Html Msg
 view model =
-    div []
-        [ tournamentNavBar model.tournamentModel.name
-        , tournamentSectionTitle "Agenda"
-        , viewSchedule model.tournamentModel
-        ]
+    case model.tournamentModel.tournament of
+        RemoteData.NotAsked ->
+            text ""
+
+        RemoteData.Loading ->
+            text "Loading"
+
+        RemoteData.Success tournament ->
+            div []
+                [ tournamentNavBar tournament.name
+                , tournamentSectionTitle "Agenda"
+                , viewSchedule model.tournamentModel
+                ]
+
+        RemoteData.Failure error ->
+            text (toString error)
 
 
 viewSchedule : TournamentModel.Model -> Html msg
