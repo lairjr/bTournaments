@@ -26,14 +26,6 @@ updateModel msg model =
         TournamentMsgs.ReceiveDate date ->
             { model | selectedDate = Just date }
 
-        TournamentMsgs.UpdateSelectedDate unites ->
-            case model.selectedDate of
-                Just date ->
-                    { model | selectedDate = Just (Date.add Date.Day unites date) }
-
-                Nothing ->
-                    model
-
         _ ->
             model
 

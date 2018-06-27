@@ -1,16 +1,12 @@
-module Tournament.View.Home exposing (..)
+module Tournament.View.Standings exposing (..)
 
-import Date exposing (..)
-import Date.Extra as Date
 import Html exposing (Html, button, div, nav, p, strong, table, tbody, td, text, th, thead, tr)
 import Html.Attributes exposing (class)
-import Html.Events exposing (onClick)
 import Models as Root
 import Msgs exposing (Msg)
 import RemoteData exposing (WebData)
-import Tournament.Components.Layout exposing (tournamentNavBar, tournamentSectionTitle)
+import Tournament.Common.Layout exposing (tournamentNavBar, tournamentSectionTitle)
 import Tournament.Model as TournamentModel
-import Tournament.Msgs as TournamentMsgs
 
 
 view : Root.Model -> Html Msg

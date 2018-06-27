@@ -66,15 +66,22 @@
           "name": "Grupo A",
           "teams": [
             {
-              "id": "2",
-              "name": "São Luís",
+              "id": "1",
+              "name": "Geraldo Santana",
               "average": 8,
               "win": 10,
               "loses": 2
             },
             {
-              "id": "1",
-              "name": "Badanha",
+              "id": "2",
+              "name": "Ninjas",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "3",
+              "name": "Fúria Verde Pucrs",
               "average": 8,
               "win": 10,
               "loses": 2
@@ -85,15 +92,230 @@
           "name": "Grupo B",
           "teams": [
             {
-              "id": "3",
+              "id": "4",
+              "name": "Mustangs",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "5",
+              "name": "AAADUFRGS",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "6",
+              "name": "Embaixadores",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            }
+          ]
+        },
+        {
+          "name": "Grupo C",
+          "teams": [
+            {
+              "id": "7",
+              "name": "Tesourinha",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "8",
+              "name": "Discípuoas de Edu",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "9",
+              "name": "Tytos",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            }
+          ]
+        },
+        {
+          "name": "Grupo D",
+          "teams": [
+            {
+              "id": "10",
+              "name": "Foguete",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "11",
+              "name": "Gigantes",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "12",
+              "name": "Restinga Bullets",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            }
+          ]
+        },
+        {
+          "name": "Grupo E",
+          "teams": [
+            {
+              "id": "13",
               "name": "Titios",
               "average": 8,
               "win": 10,
               "loses": 2
             },
             {
-              "id": "4",
-              "name": "Freeday",
+              "id": "14",
+              "name": "Bellers",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "15",
+              "name": "Redenção",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            }
+          ]
+        },
+        {
+          "name": "Grupo F",
+          "teams": [
+            {
+              "id": "16",
+              "name": "Jamallers",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "17",
+              "name": "OBB",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "18",
+              "name": "Viamão",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            }
+          ]
+        },
+        {
+          "name": "Grupo G",
+          "teams": [
+            {
+              "id": "19",
+              "name": "Magic de OZ",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "20",
+              "name": "Unidos pelo Basquete",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "21",
+              "name": "MM",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            }
+          ]
+        },
+        {
+          "name": "Grupo H",
+          "teams": [
+            {
+              "id": "22",
+              "name": "Gaúcho",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "23",
+              "name": "IPA",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "24",
+              "name": "RTG",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            }
+          ]
+        },
+        {
+          "name": "Grupo I",
+          "teams": [
+            {
+              "id": "25",
+              "name": "Scissors",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "26",
+              "name": "Magic Ducks",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "27",
+              "name": "Zona Sul Bullets",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            }
+          ]
+        },
+        {
+          "name": "Grupo J",
+          "teams": [
+            {
+              "id": "28",
+              "name": "United",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "29",
+              "name": "UDEP",
+              "average": 8,
+              "win": 10,
+              "loses": 2
+            },
+            {
+              "id": "30",
+              "name": "BNS Cidreira",
               "average": 8,
               "win": 10,
               "loses": 2

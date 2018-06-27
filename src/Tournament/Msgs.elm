@@ -12,7 +12,6 @@ type InternalMsg
     | OnFetchTeams (WebData (List TournamentModel.Team))
     | OnFetchTournament (WebData TournamentModel.Tournament)
     | ReceiveDate Date
-    | UpdateSelectedDate Int
 
 
 type Msg

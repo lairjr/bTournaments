@@ -6,7 +6,7 @@ import Html.Attributes exposing (class)
 import Models as Root
 import Msgs exposing (Msg)
 import RemoteData exposing (WebData)
-import Tournament.Components.Layout exposing (tournamentNavBar, tournamentSectionTitle)
+import Tournament.Common.Layout exposing (tournamentNavBar, tournamentSectionTitle)
 import Tournament.Model as TournamentModel
 
 
