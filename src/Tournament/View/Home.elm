@@ -25,13 +25,8 @@ view model =
         RemoteData.Success tournament ->
             div []
                 [ tournamentNavBar tournament.name
-                , tournamentSectionTitle "Tabela"
-                , div [ class "columns is-multiline" ]
-                    [ div [ class "column is-two-thirds" ]
-                        (List.map group tournament.standings)
-                    , div [ class "column" ]
-                        [ tournamentCalendar model.tournamentModel ]
-                    ]
+                , tournamentSectionTitle "Classificação"
+                , div [ class "columns is-multiline" ] (List.map group tournament.standings)
                 ]
 
         RemoteData.Failure error ->
@@ -40,7 +35,7 @@ view model =
 
 group : TournamentModel.Group -> Html Msg
 group group =
-    div []
+    div [ class "column is-half" ]
         [ text group.name
         , table [ class "table" ]
             [ thead []
@@ -64,56 +59,4 @@ teamRow team =
         , td [] [ text (toString team.average) ]
         , td [] [ text (toString team.win) ]
         , td [] [ text (toString team.loses) ]
-        ]
-
-
-compareDay : Date -> TournamentModel.ScheduleDay -> Bool
-compareDay date scheduleDay =
-    Date.equalBy Date.Day date scheduleDay.date
-
-
-tournamentCalendar : TournamentModel.Model -> Html Msg
-tournamentCalendar model =
-    case model.schedule of
-        RemoteData.NotAsked ->
-            text ""
-
-        RemoteData.Loading ->
-            text "Loading"
-
-        RemoteData.Failure error ->
-            text (toString error)
-
-        RemoteData.Success schedule ->
-            case model.selectedDate of
-                Just selectedDate ->
-                    let
-                        selectedScheduleHead =
-                            List.head (List.filter (compareDay selectedDate) schedule)
-
-                        selectedSchedule =
-                            Maybe.withDefault { date = selectedDate, games = [] } selectedScheduleHead
-                    in
-                    div []
-                        [ div [ class "columns" ]
-                            [ div [ class "column is-1" ] [ button [ onClick (Msgs.MsgForTournament (TournamentMsgs.UpdateSelectedDate -1)) ] [ text "<" ] ]
-                            , div [ class "column" ] [ text (String.concat [ toString (Date.day selectedDate), "/", toString (Date.month selectedDate) ]) ]
-                            , div [ class "column is-1" ] [ button [ onClick (Msgs.MsgForTournament (TournamentMsgs.UpdateSelectedDate 1)) ] [ text ">" ] ]
-                            ]
-                        , div [ class "tile is-ancestor is-vertical" ]
-                            (List.map gameRow selectedSchedule.games)
-                        ]
-
-                Nothing ->
-                    text "Error"
-
-
-gameRow : TournamentModel.Game -> Html Msg
-gameRow game =
-    div [ class "tile is-child box" ]
-        [ div [ class "columns" ]
-            [ div [ class "column " ] [ text game.homeTeam ]
-            , div [ class "column " ] [ text "x" ]
-            , div [ class "column " ] [ text game.awayTeam ]
-            ]
         ]
