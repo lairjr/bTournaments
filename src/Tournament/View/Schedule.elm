@@ -1,5 +1,6 @@
 module Tournament.View.Schedule exposing (..)
 
+import Common.Layout exposing (mainContainer)
 import Date.Extra as Date
 import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
@@ -22,15 +23,14 @@ view model =
         RemoteData.Success tournament ->
             div []
                 [ tournamentNavBar tournament.name
-                , tournamentSectionTitle "Agenda"
-                , viewSchedule model.tournamentModel
+                , mainContainer (viewSchedule model.tournamentModel)
                 ]
 
         RemoteData.Failure error ->
             text (toString error)
 
 
-viewSchedule : TournamentModel.Model -> Html msg
+viewSchedule : TournamentModel.Model -> Html Msg
 viewSchedule model =
     case model.schedule of
         RemoteData.NotAsked ->
@@ -40,7 +40,10 @@ viewSchedule model =
             text "Loading..."
 
         RemoteData.Success schedule ->
-            tournamentSchedule schedule
+            div []
+                [ tournamentSectionTitle "Agenda"
+                , tournamentSchedule schedule
+                ]
 
         RemoteData.Failure error ->
             text (toString error)

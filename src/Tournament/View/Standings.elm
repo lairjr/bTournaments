@@ -1,5 +1,6 @@
 module Tournament.View.Standings exposing (..)
 
+import Common.Layout exposing (mainContainer)
 import Html exposing (Html, button, div, nav, p, strong, table, tbody, td, text, th, thead, tr)
 import Html.Attributes exposing (class)
 import Models as Root
@@ -21,12 +22,19 @@ view model =
         RemoteData.Success tournament ->
             div []
                 [ tournamentNavBar tournament.name
-                , tournamentSectionTitle "Classificação"
-                , div [ class "columns is-multiline" ] (List.map group tournament.standings)
+                , mainContainer (viewStandings tournament)
                 ]
 
         RemoteData.Failure error ->
             text (toString error)
+
+
+viewStandings : TournamentModel.Tournament -> Html Msg
+viewStandings tournament =
+    div []
+        [ tournamentSectionTitle "Classificação"
+        , div [ class "columns is-multiline" ] (List.map group tournament.standings)
+        ]
 
 
 group : TournamentModel.Group -> Html Msg

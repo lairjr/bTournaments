@@ -10,11 +10,15 @@ mainView : Html Msg -> Html Msg
 mainView page =
     div [ id "page" ]
         [ navBar
-        , div [ class "container" ]
-            [ page
-            ]
+        , page
         , footerLayout
         ]
+
+
+mainContainer : Html Msg -> Html Msg
+mainContainer internalView =
+    div [ class "container" ]
+        [ internalView ]
 
 
 footerLayout : Html Msg

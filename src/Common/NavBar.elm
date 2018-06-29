@@ -7,12 +7,10 @@ import Msgs exposing (Msg)
 
 navBar : Html Msg
 navBar =
-    nav [ class "navbar has-shadow" ]
-        [ div [ class "container" ]
-            [ div [ class "navbar-brand" ]
-                [ a [ class "navbar-item" ]
-                    [ img [ src "static/logo.png" ] []
-                    ]
+    nav [ class "navbar has-shadow has-background-light" ]
+        [ div [ class "navbar-brand" ]
+            [ a [ class "navbar-item" ]
+                [ img [ src "static/logo.png" ] []
                 ]
             ]
         ]

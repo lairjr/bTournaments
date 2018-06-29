@@ -7,7 +7,7 @@ import Msgs exposing (Msg)
 
 tournamentNavBar : String -> Html Msg
 tournamentNavBar title =
-    nav [ class "navbar" ]
+    nav [ class "navbar has-background-dark" ]
         [ div [ class "navbar-brand" ]
             [ a [ class "navbar-item" ] [ text title ]
             , a [ class "navbar-burger" ]
@@ -32,6 +32,6 @@ tournamentSectionTitle : String -> Html Msg
 tournamentSectionTitle title =
     nav [ class "level" ]
         [ div [ class "level-left" ]
-            [ p [ class "subtitle is-5" ] [ strong [] [ text title ] ]
+            [ p [ class "subtitle is-6" ] [ strong [] [ text title ] ]
             ]
         ]
