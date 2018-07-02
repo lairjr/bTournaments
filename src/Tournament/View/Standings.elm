@@ -6,6 +6,7 @@ import Html.Attributes exposing (class)
 import Models as Root
 import Msgs exposing (Msg)
 import RemoteData exposing (WebData)
+import String exposing (concat, toUpper)
 import Tournament.Common.Layout exposing (tournamentNavBar, tournamentSectionTitle)
 import Tournament.Model as TournamentModel
 
@@ -40,11 +41,10 @@ viewStandings tournament =
 group : TournamentModel.Group -> Html Msg
 group group =
     div [ class "column is-half" ]
-        [ text group.name
-        , table [ class "table" ]
+        [ strong [] [ text (toUpper group.name) ]
+        , table [ class "table is-fullwidth" ]
             [ thead []
-                [ th [] [ text "Pos" ]
-                , th [] [ text "Team" ]
+                [ th [] [ text "Team" ]
                 , th [] [ text "Average" ]
                 , th [] [ text "W" ]
                 , th [] [ text "L" ]
@@ -58,8 +58,7 @@ group group =
 teamRow : TournamentModel.Team -> Html Msg
 teamRow team =
     tr []
-        [ td [] [ text "1" ]
-        , td [] [ text team.name ]
+        [ td [] [ strong [] [ text (toString team.position) ], text (concat [ " ", team.name ]) ]
         , td [] [ text (toString team.average) ]
         , td [] [ text (toString team.win) ]
         , td [] [ text (toString team.loses) ]

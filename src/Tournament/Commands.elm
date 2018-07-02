@@ -69,6 +69,7 @@ teamDecoder =
         |> required "average" Decode.float
         |> required "win" Decode.int
         |> required "loses" Decode.int
+        |> required "position" Decode.int
 
 
 fetchTournamentCmdUrl : String

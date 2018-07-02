@@ -42,6 +42,7 @@ type alias Team =
     , average : Float
     , win : Int
     , loses : Int
+    , position : Int
     }
 
 

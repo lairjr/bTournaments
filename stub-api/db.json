@@ -70,21 +70,24 @@
               "name": "Geraldo Santana",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "2",
               "name": "Ninjas",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "3",
               "name": "Fúria Verde Pucrs",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             }
           ]
         },
@@ -96,21 +99,24 @@
               "name": "Mustangs",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "5",
               "name": "AAADUFRGS",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "6",
               "name": "Embaixadores",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             }
           ]
         },
@@ -122,21 +128,24 @@
               "name": "Tesourinha",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "8",
               "name": "Discípuoas de Edu",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "9",
               "name": "Tytos",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             }
           ]
         },
@@ -148,21 +157,24 @@
               "name": "Foguete",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "11",
               "name": "Gigantes",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "12",
               "name": "Restinga Bullets",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             }
           ]
         },
@@ -174,21 +186,24 @@
               "name": "Titios",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "14",
               "name": "Bellers",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "15",
               "name": "Redenção",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             }
           ]
         },
@@ -200,21 +215,24 @@
               "name": "Jamallers",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "17",
               "name": "OBB",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "18",
               "name": "Viamão",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             }
           ]
         },
@@ -226,21 +244,24 @@
               "name": "Magic de OZ",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "20",
               "name": "Unidos pelo Basquete",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "21",
               "name": "MM",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             }
           ]
         },
@@ -252,21 +273,24 @@
               "name": "Gaúcho",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "23",
               "name": "IPA",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "24",
               "name": "RTG",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             }
           ]
         },
@@ -278,21 +302,24 @@
               "name": "Scissors",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "26",
               "name": "Magic Ducks",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "27",
               "name": "Zona Sul Bullets",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             }
           ]
         },
@@ -304,21 +331,24 @@
               "name": "United",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "29",
               "name": "UDEP",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             },
             {
               "id": "30",
               "name": "BNS Cidreira",
               "average": 8,
               "win": 10,
-              "loses": 2
+              "loses": 2,
+              "position": 1
             }
           ]
         }
