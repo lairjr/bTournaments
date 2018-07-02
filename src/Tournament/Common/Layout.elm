@@ -1,8 +1,9 @@
 module Tournament.Common.Layout exposing (..)
 
 import Html exposing (Html, a, div, nav, p, span, strong, text)
-import Html.Attributes exposing (class, href)
+import Html.Attributes exposing (class, href, style)
 import Msgs exposing (Msg)
+import String exposing (toUpper)
 
 
 tournamentNavBar : String -> Html Msg
@@ -30,8 +31,8 @@ tournamentNavBar title =
 
 tournamentSectionTitle : String -> Html Msg
 tournamentSectionTitle title =
-    nav [ class "level" ]
-        [ div [ class "level-left" ]
-            [ p [ class "subtitle is-6" ] [ strong [] [ text title ] ]
+    nav [ class "level", style [ ( "margin", "1rem" ) ] ]
+        [ p [ class "level-item has-text-centered" ]
+            [ p [ class "subtitle is-5" ] [ strong [] [ text (toUpper title) ] ]
             ]
         ]
