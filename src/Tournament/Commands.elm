@@ -1,9 +1,10 @@
-module Tournament.Commands exposing (..)
+module Tournament.Commands exposing (fetchScheduleCmd, fetchScheduleCmdUrl, fetchTeamsCmd, fetchTeamsCmdUrl, fetchTournamentCmd, fetchTournamentCmdUrl, gameDecoder, groupDecoder, scheduleDayDecoder, scheduleDecoder, teamDecoder, teamsDecoder, tournamentDecoder)
 
 import Http
 import Json.Decode as Decode
 import Json.Decode.Extra as DecodeExtra
 import Json.Decode.Pipeline exposing (decode, optional, required)
+import Json.Decode exposing(succeed)
 import RemoteData
 import Tournament.Model as TournamentModel
 import Tournament.Msgs as TournamentMsgs
@@ -28,14 +29,14 @@ scheduleDecoder =
 
 scheduleDayDecoder : Decode.Decoder TournamentModel.ScheduleDay
 scheduleDayDecoder =
-    decode TournamentModel.ScheduleDay
+    succeed TournamentModel.ScheduleDay
         |> required "date" DecodeExtra.date
         |> required "games" (Decode.list gameDecoder)
 
 
 gameDecoder : Decode.Decoder TournamentModel.Game
 gameDecoder =
-    decode TournamentModel.Game
+    succeed TournamentModel.Game
         |> required "id" Decode.string
         |> required "awayTeam" Decode.string
         |> required "awayScore" Decode.int
@@ -63,7 +64,7 @@ teamsDecoder =
 
 teamDecoder : Decode.Decoder TournamentModel.Team
 teamDecoder =
-    decode TournamentModel.Team
+    succeed TournamentModel.Team
         |> required "id" Decode.string
         |> required "name" Decode.string
         |> required "average" Decode.float

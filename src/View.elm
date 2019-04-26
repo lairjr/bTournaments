@@ -1,12 +1,12 @@
-module View exposing (..)
+module View exposing (notFoundView, page)
 
 import Common.Layout exposing (mainView)
 import Html exposing (Html, a, div, text)
 import Html.Attributes exposing (class, href)
 import Models exposing (Model)
 import Msgs exposing (Msg)
-import Tournament.View.Standings
 import Tournament.View.Schedule
+import Tournament.View.Standings
 
 
 page : Model -> Html Msg

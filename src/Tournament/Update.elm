@@ -1,4 +1,4 @@
-module Tournament.Update exposing (..)
+module Tournament.Update exposing (updateCmd, updateModel)
 
 import Date exposing (..)
 import Date.Extra as Date

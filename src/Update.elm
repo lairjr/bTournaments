@@ -1,4 +1,4 @@
-module Update exposing (..)
+module Update exposing (tournamentTranslator, update, updateCmd, updateModel)
 
 import Models exposing (Model)
 import Msgs exposing (Msg(..))

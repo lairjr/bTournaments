@@ -1,4 +1,4 @@
-module Tournament.View.Standings exposing (..)
+module Tournament.View.Standings exposing (group, teamRow, view, viewStandings)
 
 import Common.Layout exposing (mainContainer)
 import Html exposing (Html, button, div, nav, p, strong, table, tbody, td, text, th, thead, tr)
@@ -27,7 +27,7 @@ view model =
                 ]
 
         RemoteData.Failure error ->
-            text (toString error)
+            text (error)
 
 
 viewStandings : TournamentModel.Tournament -> Html Msg
@@ -58,8 +58,8 @@ group group =
 teamRow : TournamentModel.Team -> Html Msg
 teamRow team =
     tr []
-        [ td [] [ strong [] [ text (toString team.position) ], text (concat [ " ", team.name ]) ]
-        , td [] [ text (toString team.average) ]
-        , td [] [ text (toString team.win) ]
-        , td [] [ text (toString team.loses) ]
+        [ td [] [ strong [] [ text (String.fromInt team.position) ], text (concat [ " ", team.name ]) ]
+        , td [] [ text (String.fromInt team.average) ]
+        , td [] [ text (String.fromInt team.win) ]
+        , td [] [ text (String.fromInt team.loses) ]
         ]

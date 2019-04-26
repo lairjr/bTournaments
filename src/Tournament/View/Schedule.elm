@@ -1,4 +1,4 @@
-module Tournament.View.Schedule exposing (..)
+module Tournament.View.Schedule exposing (dayRow, gameRow, tournamentSchedule, view, viewSchedule)
 
 import Common.Layout exposing (mainContainer)
 import Date.Extra as Date
@@ -27,7 +27,7 @@ view model =
                 ]
 
         RemoteData.Failure error ->
-            text (toString error)
+            text (error)
 
 
 viewSchedule : TournamentModel.Model -> Html Msg
@@ -46,7 +46,7 @@ viewSchedule model =
                 ]
 
         RemoteData.Failure error ->
-            text (toString error)
+            text (error)
 
 
 tournamentSchedule : List TournamentModel.ScheduleDay -> Html msg
@@ -75,11 +75,11 @@ gameRow game =
                 [ text game.homeTeam
                 ]
             , div [ class "column has-text-centered is-2" ]
-                [ text (toString game.homeScore)
+                [ text (String.fromInt game.homeScore)
                 ]
             , div [ class "column has-text-centered is-2" ] [ text "x" ]
             , div [ class "column has-text-centered is-2" ]
-                [ text (toString game.awayScore)
+                [ text (String.fromInt game.awayScore)
                 ]
             , div [ class "column has-text-centered is-2" ]
                 [ text game.awayTeam

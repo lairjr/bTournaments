@@ -1,4 +1,4 @@
-module Tournament.Model exposing (..)
+module Tournament.Model exposing (Game, Group, Model, Msg(..), ScheduleDay, Team, Tournament, initialModel)
 
 import Date exposing (..)
 import RemoteData exposing (WebData)

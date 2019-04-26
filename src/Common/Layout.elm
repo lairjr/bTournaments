@@ -1,4 +1,4 @@
-module Common.Layout exposing (..)
+module Common.Layout exposing (footerLayout, mainContainer, mainView)
 
 import Common.NavBar exposing (navBar)
 import Html exposing (Html, a, div, footer, p, section, strong, text)

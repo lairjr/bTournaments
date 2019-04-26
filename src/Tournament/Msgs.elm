@@ -1,4 +1,4 @@
-module Tournament.Msgs exposing (..)
+module Tournament.Msgs exposing (InternalMsg(..), Msg(..), TranslationDictionary, Translator, translator)
 
 import Date exposing (..)
 import RemoteData exposing (WebData)

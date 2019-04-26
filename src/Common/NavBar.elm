@@ -1,4 +1,4 @@
-module Common.NavBar exposing (..)
+module Common.NavBar exposing (navBar)
 
 import Html exposing (Html, a, div, img, nav, span, text)
 import Html.Attributes exposing (class, src)
